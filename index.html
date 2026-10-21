@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Three-Letter Word Quiz</title>
+<link rel="stylesheet" href="style.css"></head><body>
+
+<section id="home" class="screen active">
+  <h1>Word Fun!</h1>
+  <p class="sub">Listen, then drop the missing letter.</p>
+  <button class="big go" id="playBtn">▶ Play</button>
+  <button class="link" id="adminBtn">Teacher / Parent area</button>
+</section>
+
+<section id="game" class="screen">
+  <header class="bar">
+    <button class="ico" id="homeBtn" aria-label="Home">🏠</button>
+    <div id="progress">Question 1 of 10</div>
+    <div class="score">⭐ <b id="stars">0</b></div>
+    <button class="ico" id="soundBtn" aria-label="Sound on or off">🔊</button>
+    <button class="ico" id="fsBtn" aria-label="Full screen">⛶</button>
+  </header>
+  <div class="stage">
+    <div class="pic" id="pic"></div>
+    <button class="speaker" id="replay" aria-label="Hear the question again">🔊 Listen</button>
+    <div class="word" id="word"></div>
+    <div class="tiles" id="tiles"></div>
+    <div class="msg" id="msg"></div>
+    <div class="actions">
+      <button class="big go" id="submit">Submit answer</button>
+      <button class="big" id="next">Next question</button>
+      <button class="big alt" id="restart">Restart game</button>
+    </div>
+  </div>
+  <div class="burst" id="burst"></div>
+</section>
+
+<section id="result" class="screen">
+  <h1>Well done! 🎉</h1>
+  <div class="card" id="summary"></div>
+  <button class="big go" id="again">Play again</button>
+  <button class="big alt" id="toHome">Return to home</button>
+</section>
+
+<section id="admin" class="screen">
+  <header class="bar"><button class="ico" id="adminBack" aria-label="Back">←</button><h2>Teacher / Parent area</h2></header>
+  <div class="adminwrap">
+    <form id="form" class="card" autocomplete="off">
+      <h3 id="formTitle">Add a new word</h3>
+      <label>Word (3 letters) <input id="fWord" maxlength="3" placeholder="CAT"></label>
+      <label>Category <input id="fCat" placeholder="Animals"></label>
+      <label>Missing letter
+        <select id="fPos"><option value="first">First letter</option><option value="middle">Middle letter</option><option value="last">Last letter</option><option value="random">Random each time</option></select></label>
+      <label>Instruction text <input id="fInstr" placeholder="CAT ka first letter drop karo."></label>
+      <fieldset><legend>Five letter choices (tick the correct one)</legend>
+        <div id="optRows"></div></fieldset>
+      <label>Picture <input type="file" id="fImg" accept="image/*"></label>
+      <label>Question audio (MP3/WAV) <input type="file" id="fQ" accept="audio/*"></label>
+      <label>Word pronunciation audio (optional) <input type="file" id="fW" accept="audio/*"></label>
+      <div class="preview"><div id="pvPic"></div><div id="pvWord" class="word small"></div>
+        <button type="button" id="pvQ">▶ Test question audio</button>
+        <button type="button" id="pvW">▶ Test word audio</button></div>
+      <div id="errors"></div>
+      <button class="big go" type="submit">Save word</button>
+      <button class="big alt" type="button" id="cancel">Clear form</button>
+    </form>
+    <div class="card">
+      <h3>Saved words (<span id="count">0</span>)</h3>
+      <input id="search" type="search" placeholder="Search word or category">
+      <div id="list"></div>
+      <div class="row">
+        <button id="sample">Add sample words</button>
+        <button id="export">Export backup (JSON)</button>
+        <label class="filebtn">Import backup<input type="file" id="import" accept=".json" hidden></label>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="script.js"></script></body></html>
